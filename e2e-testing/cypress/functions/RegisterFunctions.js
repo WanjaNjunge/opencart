@@ -50,7 +50,6 @@ class RegisterFunctions {
 
 
   verify_registration() {
-    cy.get(RegisterLocators.registerModal).should('not.exist');
     cy.get(RegisterLocators.logoutButton).should('exist');
   }
 

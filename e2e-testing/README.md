@@ -11,7 +11,7 @@ https://github.com/cypress-io/cypress-example-todomvc
 
 ## CI Status
 
-This is the e2e automated testing suite for the [OpenCart Demo](https://demo.opencart.com/). The tests are written in js and they run in cypress.
+This is the e2e automated testing suite for the [OpenCart Demo](https://demo.opencart.com/). The tests are written in JS and they run in Cypress.
 
 ## File Naming And Structure
 
@@ -23,8 +23,7 @@ Each file is put into its own respectively named folder, and each folder prefixe
 Each main test file has two associated files:
 
 ### Locator file
-Named to match the associated test file. Most elements on the platform have custom attributes added to them in the format `data-qa="element_name"`
-This is then declared in the locators file and referred to from the test files.
+Named to match the associated test file.
 Locators folder has files that have custom element selectors. Locator files sit here.
 
 ### Functions file
@@ -56,12 +55,5 @@ npm run cy:open
 ```
 This will launch the test runner laying out available tests, and individual tests can be run on a browser on a visual interface.
 
-The site under test runs on a remote staging server - https://mzima.staging.ush.zone/
 
-The tests would require logging into the site. User credentials are declared in the cypress.env.json file. Contact the site owners for admin credentials to run the tests.
 
-## Contributing
-
-Refer to the [CONTRIBUTING.md]() guide for details.
-
-[Code of Conduct](https://docs.ushahidi.com/platform-developer-documentation/code-of-conduct)
