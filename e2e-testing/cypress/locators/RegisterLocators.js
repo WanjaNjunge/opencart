@@ -9,7 +9,7 @@ const RegisterLocators = {
     privacyToggle: "input[value='1'][name='agree']",
     continueButton: "button[type='submit']",
     logoutButton: 'body main a:nth-child(13)',
-    errorMessage: '[.alert]',
+    errorMessage: '.alert.alert-danger.alert-dismissible',
   };
   
   export default RegisterLocators;
