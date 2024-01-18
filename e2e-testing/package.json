@@ -8,7 +8,7 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "start": "cypress run",
+    "cy:run": "cypress run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

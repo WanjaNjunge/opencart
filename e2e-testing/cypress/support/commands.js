@@ -23,3 +23,23 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import RegisterFunctions from "../functions/RegisterFunctions";
+
+Cypress.Commands.add('registerAsNewUserAndSaveEmail', () => {
+  const registerFunctions = new RegisterFunctions();
+  
+  
+  registerFunctions.register_as_new_user();
+  
+  
+  const email = registerFunctions.getRegisteredEmail();
+  Cypress.env('registeredEmail', email);
+
+  const password = registerFunctions.getRegisteredPassword();
+  Cypress.env('registeredPassword', password)
+});
+
+
+
+

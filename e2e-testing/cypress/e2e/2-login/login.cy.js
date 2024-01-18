@@ -1,9 +1,22 @@
 import LoginFunctions from "../../functions/LoginFunctions";
+import RegisterFunctions from "../../functions/RegisterFunctions";
 
-describe("Login as Admin", () => {
+
+describe("Login", () => {
   const loginFunctions = new LoginFunctions();
+  const registerFunctions = new RegisterFunctions();
 
-  it("Logs in as existing user", () => {
-    loginFunctions.login_as_user();
+  before(() => {
+    // Run the registration logic before each login test
+    cy.registerAsNewUserAndSaveEmail();
+  
+  });
+  
+  
+
+  it("validates successful login", () => {
+    registerFunctions.logout();
+    
+    loginFunctions.login_as_existing_user();
   });
 });

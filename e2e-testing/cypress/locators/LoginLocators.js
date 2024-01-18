@@ -1,11 +1,11 @@
 const LoginLocators = {
-    accountBtn: '[:nth-child(2) > .dropdown]',
-    loginModal: '[:nth-child(2) > .dropdown > .dropdown-menu > :nth-child(2) > .dropdown-item]',
-    emailInput: '[#input-email]',
-    passwordInput: '[#input-password]',
-    loginButton: '[#form-login > .text-end > .btn]',
-    logoutButton: '[.list-group > [href="http://localhost/en-gb?route=account/logout"]]',
-    errorMessage: '[.alert]',
+    accountBtn: ':nth-child(2) > .dropdown > .dropdown-toggle > .fa-caret-down',
+    loginModal: ':nth-child(2) > .dropdown > .dropdown-menu > :nth-child(2) > .dropdown-item',
+    emailInput: '#input-email',
+    passwordInput: '#input-password',
+    loginButton: '#form-login > .text-end > .btn',
+    logoutButton: "li[class='list-inline-item'] li:nth-child(5) a:nth-child(1)",
+    errorMessage: '.alert',
   };
   
   export default LoginLocators;
