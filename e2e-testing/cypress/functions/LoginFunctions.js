@@ -35,14 +35,25 @@ class LoginFunctions {
     cy.get(LoginLocators.logoutButton).should('exist');
   }
 
+  verify_invalid_credentials_error_exist() {
+    cy.get(LoginLocators.invalidCredentials).should('be.visible')
+  }
+
+  verify_negative_login() {
+    this.launch_login_modal(Cypress.env('baseUrl'));
+    this.type_email('test');
+    this.type_password('Password@@@2023');
+    this.click_login_button();
+    this.verify_invalid_credentials_error_exist();
+  }
 
   login_as_existing_user() {
     
     const registeredEmail = Cypress.env('registeredEmail');
     const registeredPassword = Cypress.env('registeredPassword')
-    // if (!registerFunctions.type_email(registeredEmail)) {
-    //   throw new Error('No registered email available. Please run register_as_new_user first.');
-    // }
+    if (!registeredEmail) {
+      throw new Error('No registered email available. Please run register_as_new_user first.');
+    }
 
     this.launch_login_modal(Cypress.env('baseUrl'));
     this.type_email(registeredEmail);

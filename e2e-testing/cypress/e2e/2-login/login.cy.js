@@ -11,12 +11,10 @@ describe("Login", () => {
     cy.registerAsNewUserAndSaveEmail();
   
   });
-  
-  
 
   it("validates successful login", () => {
     registerFunctions.logout();
-    
+
     loginFunctions.login_as_existing_user();
   });
 });

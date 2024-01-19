@@ -5,6 +5,7 @@ const LoginLocators = {
     passwordInput: '#input-password',
     loginButton: '#form-login > .text-end > .btn',
     logoutButton: "li[class='list-inline-item'] li:nth-child(5) a:nth-child(1)",
+    invalidCredentials: ".alert.alert-danger.alert-dismissible",
     errorMessage: '.alert',
   };
   
