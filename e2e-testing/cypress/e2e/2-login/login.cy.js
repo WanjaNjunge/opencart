@@ -12,6 +12,7 @@ describe("Login", () => {
   });
 
   it("validates successful login", () => {
+    // logout
     registerFunctions.logout();
 
     loginFunctions.login_as_existing_user();
