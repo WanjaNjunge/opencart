@@ -1,8 +1,12 @@
 name: End-to-end tests
 on:
-    push:
-        paths:
-            - 'e2e-testing/**'
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize]
+
+    
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -14,3 +18,8 @@ jobs:
       # https://github.com/cypress-io/github-action
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          record: false
+          publish-summary: true
+          component: false
+          working-directory: e2e-testing
