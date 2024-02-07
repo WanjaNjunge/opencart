@@ -9,7 +9,6 @@ describe("Login", () => {
   before(() => {
     // Run the registration logic before each login test
     cy.registerAsNewUserAndSaveEmail();
-  
   });
 
   it("validates successful login", () => {
