@@ -90,7 +90,7 @@ class RegisterFunctions {
     this.registeredPassword = password;
     
   
-    cy.wait(2000);
+    
   }
   
   getRegisteredEmail() {
