@@ -52,7 +52,11 @@ jobs:
           done
 
       - name: Wait for OpenCart to be ready
-        run: dockerize -wait tcp://localhost:8080 -timeout 1m
+        run: |
+          for i in {1..30}; do
+            nc -z localhost 8080 && break
+            sleep 2
+          done
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
