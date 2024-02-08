@@ -25,8 +25,8 @@ jobs:
       opencart:
         image: docker.io/bitnami/opencart:4
         env:
-          OPENCART_HOST: localhost
-          OPENCART_DATABASE_HOST: mariadb
+          OPENCART_HOST: 'opencart'
+          OPENCART_DATABASE_HOST: 'mariadb'
           OPENCART_DATABASE_PORT_NUMBER: 3306
           OPENCART_DATABASE_USER: bn_opencart
           OPENCART_DATABASE_NAME: bitnami_opencart
