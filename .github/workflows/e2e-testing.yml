@@ -10,12 +10,46 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: docker.io/bitnami/mariadb:11.2
+        env:
+          ALLOW_EMPTY_PASSWORD: yes
+          MARIADB_USER: bn_opencart
+          MARIADB_DATABASE: bitnami_opencart
+        ports:
+          - '3306:3306'
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+      opencart:
+        image: docker.io/bitnami/opencart:4
+        env:
+          OPENCART_HOST: localhost
+          OPENCART_DATABASE_HOST: mariadb
+          OPENCART_DATABASE_PORT_NUMBER: 3306
+          OPENCART_DATABASE_USER: bn_opencart
+          OPENCART_DATABASE_NAME: bitnami_opencart
+          ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - '8080:8080'
+          - '8443:8443'
+        options: --health-cmd="curl --silent --fail localhost:8080" --health-interval=10s --health-timeout=5s --health-retries=3
+
+
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       # https://github.com/cypress-io/github-action
+      - name: Wait for MariaDB to be ready
+        run: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - name: Wait for OpenCart to be ready
+        run: dockerize -wait tcp://localhost:8080 -timeout 1m
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
