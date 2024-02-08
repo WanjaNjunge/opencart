@@ -45,14 +45,14 @@ jobs:
       # and run all Cypress tests
       # https://github.com/cypress-io/github-action
       - name: Wait for MariaDB to be ready
-        run: dockerize -wait tcp://localhost:3306 -timeout 1m
-
-      - name: Wait for OpenCart to be ready
         run: |
           for i in {1..30}; do
             nc -z localhost 3306 && break
             sleep 2
           done
+
+      - name: Wait for OpenCart to be ready
+        run: dockerize -wait tcp://localhost:8080 -timeout 1m
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
